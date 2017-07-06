@@ -86,6 +86,7 @@ public interface Message
      * @return true if message was send.
      */
     boolean broadcastStaticMessage(Locale lang, MessageData<?>... data);
+
     /**
      * Try broadcast this message to selected comamnd senders, if message is disabled method will just return false.
      *
@@ -98,8 +99,8 @@ public interface Message
      *
      * @return true if message was send.
      */
-
     boolean broadcastStaticMessage(Iterable<? extends CommandSender> targets, Locale lang, MessageData<?>... data);
+
     /**
      * Try broadcast this message (to all players) in target player language if possible, if message is disabled method will just return false.
      *
@@ -124,8 +125,8 @@ public interface Message
      *
      * @return true if message was send.
      */
-
     boolean broadcastMessage(Iterable<? extends CommandSender> targets, Locale lang, MessageData<?>... data);
+
     /**
      * Try broadcast this message (to all players) in target player language if possible, if message is disabled method will just return false.
      *
@@ -134,8 +135,8 @@ public interface Message
      *
      * @return true if message was send.
      */
-
     boolean broadcastMessage(MessageData<?>... data);
+
     /**
      * Try broadcast this message to selected comamnd senders in target sender language if possible, if message is disabled method will just return false.
      *
