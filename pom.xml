@@ -14,7 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <version.library.diorite-commons>1.2</version.library.diorite-commons>
-        <version.library.diorite-configs>1.2.2</version.library.diorite-configs>
+        <version.library.diorite-configs>1.2.3</version.library.diorite-configs>
         <version.library.guava>21.0</version.library.guava>
         <version.library.jsr305>3.0.1</version.library.jsr305>
         <version.library.intellij-annotations>15.0</version.library.intellij-annotations>

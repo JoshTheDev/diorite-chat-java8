@@ -114,4 +114,9 @@ public class CommandParserContext extends ParserContext
     {
         return (CommandParserContext) super.clone();
     }
+
+    public static CommandParserContext create(String data, Collection<? extends Argument<?>> arguments)
+    {
+        return new CommandParserContext(data, arguments);
+    }
 }

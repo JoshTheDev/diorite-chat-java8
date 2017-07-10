@@ -22,44 +22,34 @@
  * SOFTWARE.
  */
 
-package org.diorite.sender;
+package org.diorite.message.data;
 
-import org.diorite.chat.MessageOutput;
-import org.diorite.chat.MessageReceiver;
-import org.diorite.message.data.MessageData;
-
-/**
- * Represent source of command.
- */
-public interface CommandSender extends MessageReceiver, MessageData<CommandSender>
+class SimpleMessageData<T> implements MessageData<T>
 {
-    /**
-     * Returns name of command sender.
-     *
-     * @return name of command sender.
-     */
-    String getName();
+    private final String key;
+    private final T      value;
 
-    /**
-     * Returns message output for this sender.
-     *
-     * @return message output for this sender.
-     */
-    @Override
-    MessageOutput getMessageOutput();
-
-    /**
-     * Sets message output for this command sender. <br>
-     * Message output only need implement {@link MessageOutput} interface, it don't need to implement/extends any implementation classes.
-     * So you can create own message output without any problems. <br>
-     * Message output can't be null, use {@link MessageOutput#IGNORE} instead.
-     *
-     * @param messageOutput
-     *         new message output.
-     */
-    @Override
-    void setMessageOutput(MessageOutput messageOutput);
+    SimpleMessageData(String key, T value)
+    {
+        this.key = key;
+        this.value = value;
+    }
 
     @Override
-    default String getMessageKey() {return "sender";}
+    public String getMessageKey()
+    {
+        return this.key;
+    }
+
+    @Override
+    public T getMessageValue()
+    {
+        return this.value;
+    }
+
+    @Override
+    public MessageData<T> asMessageData(String key)
+    {
+        return new SimpleMessageData<>(key, this.value);
+    }
 }

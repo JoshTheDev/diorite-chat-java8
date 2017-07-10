@@ -71,7 +71,7 @@ public interface MessageReceiver
      *
      * @return output object for this receiver.
      */
-    MessageOutput getOutput();
+    MessageOutput getMessageOutput();
 
     /**
      * Set new output object for this receiver.
@@ -79,5 +79,5 @@ public interface MessageReceiver
      * @param output
      *         new output object.
      */
-    void setOutput(MessageOutput output);
+    void setMessageOutput(MessageOutput messageOutput);
 }

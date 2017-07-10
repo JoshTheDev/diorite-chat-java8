@@ -46,5 +46,5 @@ public interface Argument<T>
      *
      * @return parse result.
      */
-    ArgumentParseResult<T> tryParse(CommandParserContext context, Consumer<T> endConsumer);
+    ArgumentParseResult<? extends T> tryParse(CommandParserContext context, Consumer<T> endConsumer);
 }

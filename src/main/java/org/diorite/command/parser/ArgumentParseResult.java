@@ -26,13 +26,15 @@ package org.diorite.command.parser;
 
 import javax.annotation.Nullable;
 
+import java.util.function.Function;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Represent result of single argument parse.
  *
  * @param <T>
- *         type of argument.
+ *     type of argument.
  */
 public class ArgumentParseResult<T>
 {
@@ -53,6 +55,7 @@ public class ArgumentParseResult<T>
             this.exception = (exception == null) ? CommandParserException.fromResultType(type, null) : null;
         }
     }
+
     protected ArgumentParseResult(@Nullable T result, ArgumentParseResultType type, @Nullable Exception exception, ArgumentParseResult<?> last)
     {
         this.result = result;
@@ -65,6 +68,15 @@ public class ArgumentParseResult<T>
         {
             this.exception = (exception == null) ? CommandParserException.fromResultType(type, last.getException()) : null;
         }
+    }
+
+    public <E> ArgumentParseResult<E> map(Function<T, E> resultConverter)
+    {
+        if (this.result == null)
+        {
+            return new ArgumentParseResult<>(null, this.type, this.exception);
+        }
+        return new ArgumentParseResult<>(resultConverter.apply(this.result), this.type, this.exception);
     }
 
     /**
@@ -82,7 +94,7 @@ public class ArgumentParseResult<T>
      * Returns true if this result is of given type.
      *
      * @param type
-     *         expected type.
+     *     expected type.
      *
      * @return true if this result is of given type.
      */

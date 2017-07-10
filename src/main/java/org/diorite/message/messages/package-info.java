@@ -22,44 +22,10 @@
  * SOFTWARE.
  */
 
-package org.diorite.sender;
-
-import org.diorite.chat.MessageOutput;
-import org.diorite.chat.MessageReceiver;
-import org.diorite.message.data.MessageData;
-
 /**
- * Represent source of command.
+ * Types of messages
  */
-public interface CommandSender extends MessageReceiver, MessageData<CommandSender>
-{
-    /**
-     * Returns name of command sender.
-     *
-     * @return name of command sender.
-     */
-    String getName();
+@NonnullByDefault
+package org.diorite.message.messages;
 
-    /**
-     * Returns message output for this sender.
-     *
-     * @return message output for this sender.
-     */
-    @Override
-    MessageOutput getMessageOutput();
-
-    /**
-     * Sets message output for this command sender. <br>
-     * Message output only need implement {@link MessageOutput} interface, it don't need to implement/extends any implementation classes.
-     * So you can create own message output without any problems. <br>
-     * Message output can't be null, use {@link MessageOutput#IGNORE} instead.
-     *
-     * @param messageOutput
-     *         new message output.
-     */
-    @Override
-    void setMessageOutput(MessageOutput messageOutput);
-
-    @Override
-    default String getMessageKey() {return "sender";}
-}
+import org.diorite.annotations.NonnullByDefault;

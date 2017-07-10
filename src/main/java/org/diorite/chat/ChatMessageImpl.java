@@ -24,14 +24,14 @@
 
 package org.diorite.chat;
 
-import javax.annotation.Nullable;
-
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 class ChatMessageImpl extends BaseComponentElement<ChatMessageImpl, ChatMessageEvent, ChatEventAppendChat> implements ChatMessage
 {
-    @Nullable Object cache; // for chat service implementation.
+    private final ComponentElement element;
+
+    ChatMessageImpl(ComponentElement element) {this.element = element;}
 
     @Override
     public void sendTo(ChatMessageType type, MessageReceiver messageReceiver)
@@ -66,7 +66,7 @@ class ChatMessageImpl extends BaseComponentElement<ChatMessageImpl, ChatMessageE
     @Override
     protected ChatMessageImpl createElement()
     {
-        return new ChatMessageImpl();
+        return new ChatMessageImpl(element);
     }
 
     @Override
@@ -185,5 +185,11 @@ class ChatMessageImpl extends BaseComponentElement<ChatMessageImpl, ChatMessageE
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("text", "NOT IMPLEMENTED YET, DIORITE CORPORAJT 2017");
         return jsonObject;
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.element.toString();
     }
 }

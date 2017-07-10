@@ -119,7 +119,7 @@ public class Parser
     StringBuilder sb          = new StringBuilder(128);
     int           indexOfText = 0;
 
-    public String parse()
+    public ChatMessage parse()
     {
         ParserContext context = this.context;
         while (context.hasNext())
@@ -154,17 +154,17 @@ public class Parser
 
         this.prepareElement();
         // TODO: remove this debug length code
-        System.out.println(this.rootElement.toString());
-        int length = this.rootElement.toString().length();
-        if (this.settings.useOptimizer)
-        {
-            this.rootElement.optimize();
-        }
-        System.out.println(this.rootElement);
-        int newLength = this.rootElement.toString().length();
-        int saved = length - newLength;
-        System.out.println("Smaller by: " + saved + " (from: " + length + ", to: " + newLength + ") Use optimizer: " + this.settings.useOptimizer);
-        return this.rootElement.toString();
+//        System.out.println(this.rootElement.toString());
+//        int length = this.rootElement.toString().length();
+//        if (this.settings.useOptimizer)
+//        {
+//            this.rootElement.optimize();
+//        }
+//        System.out.println(this.rootElement);
+//        int newLength = this.rootElement.toString().length();
+//        int saved = length - newLength;
+//        System.out.println("Smaller by: " + saved + " (from: " + length + ", to: " + newLength + ") Use optimizer: " + this.settings.useOptimizer);
+        return new ChatMessageImpl(this.rootElement);
     }
 
     void resetStringBuilder()

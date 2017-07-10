@@ -22,28 +22,18 @@
  * SOFTWARE.
  */
 
-package org.diorite.message;
+package org.diorite.command.annotation.arguments;
 
-class SimpleMessageData<T> implements MessageData<T>
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * Marks an argument of command as sender parameter that will be used to pass sender of command to method.
+ */
+@Target({ElementType.PARAMETER})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Sender
 {
-    private final String key;
-    private final T      value;
-
-    SimpleMessageData(String key, T value)
-    {
-        this.key = key;
-        this.value = value;
-    }
-
-    @Override
-    public String getMessageKey()
-    {
-        return this.key;
-    }
-
-    @Override
-    public T getMessageValue()
-    {
-        return this.value;
-    }
 }

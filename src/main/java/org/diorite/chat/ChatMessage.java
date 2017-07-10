@@ -24,6 +24,8 @@
 
 package org.diorite.chat;
 
+import javax.annotation.Nullable;
+
 import com.google.gson.JsonElement;
 
 /**
@@ -89,9 +91,17 @@ public interface ChatMessage extends Cloneable
 
     static ChatMessage fromLegacy(String s)
     {
-        return new ChatMessageImpl();
+        return new ChatMessageImpl(null);
     }
     static ChatMessage fromString(String s) {return null;}
     //    static ChatMessage fromMarkup(String s) {return null;}
     static ChatMessage fromJson(String s) {return null;}
+    static ChatMessage parse(String markdown)
+    {
+        return parse(markdown, null);
+    }
+    static ChatMessage parse(String markdown, @Nullable ParserSettings settings)
+    {
+        return new Parser(markdown, settings).parse();
+    }
 }

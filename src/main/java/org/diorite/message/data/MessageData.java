@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package org.diorite.message;
+package org.diorite.message.data;
 
 /**
  * Represent message variable, if name isn't provided name of class will be used, or name provided by annotation. <br>
